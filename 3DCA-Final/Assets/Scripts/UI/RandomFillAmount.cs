@@ -11,25 +11,35 @@ public class RandomFillAmount : MonoBehaviour
 
     public float fillDelay;
     private bool isRunning;
+    private float fillValue;
+
+    private float lerpSpeed;
 
     void Start()
     {
         fillTarget = gameObject.GetComponent<Image>();
+        lerpSpeed = 1f * Time.deltaTime;
     }
 
     void Update()
     {
         if (!isRunning)
-            StartCoroutine(RandomFill());
+            StartCoroutine(RandomValue());
 
+        BarFiller();
     }
 
-    IEnumerator RandomFill()
+    void BarFiller()
+    {
+        fillTarget.fillAmount = Mathf.Lerp(fillTarget.fillAmount, fillValue, lerpSpeed);
+    }
+
+    IEnumerator RandomValue()
     {
         isRunning = true;
-        float fillValue = Random.Range(minAmount, maxAmount);
-        fillTarget.fillAmount = fillValue;
+        fillValue = Random.Range(minAmount, maxAmount);
         yield return new WaitForSeconds(fillDelay);
         isRunning = false;
     }
+
 }
