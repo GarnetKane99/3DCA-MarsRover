@@ -8,7 +8,9 @@ public class TypingEffect : MonoBehaviour
     // Code used from https://unitycoder.com/blog/2015/12/03/ui-text-typewriter-effect-script/
 
     Text txt;
-    string storedText;  
+    string storedText;
+
+    public float typingSpeed;
 
     void Awake()
     {
@@ -24,7 +26,7 @@ public class TypingEffect : MonoBehaviour
         foreach(char c in storedText)
         {
             txt.text += c;
-            yield return new WaitForSeconds(0.125f);
+            yield return new WaitForSeconds(typingSpeed);
         }
     }
 }
