@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class cameraLookAt : MonoBehaviour
 
@@ -10,6 +12,7 @@ public class cameraLookAt : MonoBehaviour
     float speed = 0;
     public Transform target;
     bool TargetFound = false;
+    float Timer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -26,11 +29,11 @@ public class cameraLookAt : MonoBehaviour
         //transform.rotation = transform.LookAt(target);
 
 
-       //if(!TargetFound)
-       // {
-            //TargetFound = true;
+        //if(!TargetFound)
+        // {
+        //TargetFound = true;
         //}
-
+        Timer += Time.deltaTime;
 
         if(target)
         //var TargetR = Quaternion.LookRotation(target.position - transform.position);
@@ -51,6 +54,11 @@ public class cameraLookAt : MonoBehaviour
         if (transitiondelay > 5.0f)
         {
             CamAnim.enabled = true;
+        }
+
+        if(Timer > 22.75f)
+        {
+            SceneManager.LoadScene("MainScene");
         }
     }
 }
