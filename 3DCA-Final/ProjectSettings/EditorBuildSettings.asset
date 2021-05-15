@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PerssyScene.unity
     guid: 9580056c3521b444c9d1da405bb2c855
+  - enabled: 1
+    path: Assets/Scenes/FinalScene.unity
+    guid: 4e819efc6a0fd204096ba72994014a17
   m_configObjects: {}
