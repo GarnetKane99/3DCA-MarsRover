@@ -74,7 +74,13 @@ public class PersyScan : MonoBehaviour
 
         if(Timer >= 13.0f)
         {
-            SceneManager.LoadScene("PerssyScene");
+            GameObject ExperienceType = GameObject.FindGameObjectWithTag("Experience");
+            if(ExperienceType.GetComponent<ExperienceType>().Cinematic)
+            {
+
+            }
+            else if (ExperienceType.GetComponent<ExperienceType>().Interactive)
+                SceneManager.LoadScene("PerssyScene");
         }
     }
 }
