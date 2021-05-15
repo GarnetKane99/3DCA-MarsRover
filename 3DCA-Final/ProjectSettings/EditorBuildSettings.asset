@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MissionControlScene.unity
     guid: 45f4c5d35d16b4e4887585dc0732ed9e
+  - enabled: 1
+    path: Assets/Scenes/JakeScene.unity
+    guid: 9625693208efe594e895b8b8889fb18d
+  - enabled: 1
+    path: Assets/Scenes/PerssyScene.unity
+    guid: 9580056c3521b444c9d1da405bb2c855
   m_configObjects: {}

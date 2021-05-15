@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class Scene5Script : MonoBehaviour
 {
     public Transform CamSpot;
@@ -34,5 +35,8 @@ public class Scene5Script : MonoBehaviour
 
             Overlay.color = Color.Lerp(Overlay.color, new Color(0, 0, 0, 1), 0.01f);
         }
+
+        if (Timer > 15.0f)
+            SceneManager.LoadScene("JakeScene");
     }
 }

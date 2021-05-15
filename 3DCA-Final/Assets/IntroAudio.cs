@@ -38,7 +38,12 @@ public class IntroAudio : MonoBehaviour
             {
                 float currentVol = Audi.volume;
 
-                Audi.volume = Mathf.Lerp(currentVol, 0.0f, 0.01f);
+                Audi.volume = Mathf.Lerp(currentVol, 0.0f, 0.018f);
+            }
+
+            if(timer >= 16.5f)
+            {
+                Destroy(this);
             }
         }
     }

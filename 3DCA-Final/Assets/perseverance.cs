@@ -6,7 +6,9 @@ public class perseverance : MonoBehaviour
 {
     Rigidbody rb;
 
-    bool collision = false;
+    public bool collision = false;
+
+    public bool newVector = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +18,13 @@ public class perseverance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!collision)
-        rb.velocity = Vector3.right;
+        if(!newVector)
+            rb.velocity = Vector3.right * 3.0f;
+
+        if(newVector)
+        {
+            rb.velocity = Vector3.forward * 3.0f;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
