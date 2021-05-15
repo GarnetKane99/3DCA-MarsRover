@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Scene4Script : MonoBehaviour
 {
     float moveTimer = 0.0f;
     public Light OppyLight;
     public Light FloorLight;
+    public Transform Light1Spot, Light2Spot;
+    public GameObject ShadowForRotate;
 
     Camera mainCam;
 
@@ -46,10 +49,48 @@ public class Scene4Script : MonoBehaviour
         {
             transform.Rotate(8.0f * Time.deltaTime, 0, 0);
         }
-        if(moveTimer >= 7.5f)
+        if(moveTimer >= 7.5f && moveTimer < 8.5f)
         {
             FloorLight.gameObject.SetActive(true);
+
+            var TargetRot = Quaternion.LookRotation(FloorLight.gameObject.transform.position - transform.position);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, TargetRot, 0.05f);
+
         }
 
+        if(moveTimer >= 8.5f && moveTimer < 11.0f)
+        {
+            FloorLight.transform.position = Vector3.Lerp(FloorLight.transform.position, Light1Spot.position, 0.0085f);
+
+            var TargetRot = Quaternion.LookRotation(FloorLight.gameObject.transform.position - transform.position);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, TargetRot, 0.0085f);
+            //ShadowForRotate.transform.rotation.z = Quaternion.Euler(0, 0, -20);
+            var Shadow = Quaternion.Euler(-90, 0, -30);
+            ShadowForRotate.transform.rotation = Quaternion.Slerp(ShadowForRotate.transform.rotation, Shadow, 0.0085f);
+        }
+
+        if(moveTimer >= 11.0f && moveTimer < 15.0f)
+        {
+            FloorLight.transform.position = Vector3.Lerp(FloorLight.transform.position, Light2Spot.position, 0.0085f);
+
+            var newTarget = Quaternion.LookRotation(FloorLight.gameObject.transform.position - transform.position);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, newTarget, 0.0085f);
+            var Shadow = Quaternion.Euler(-90, 0, 15);
+            ShadowForRotate.transform.rotation = Quaternion.Slerp(ShadowForRotate.transform.rotation, Shadow, 0.0085f);
+        }
+
+        if (moveTimer > 15.0f && moveTimer <= 18.0f)
+        {
+            float newIntensity = 0.0f;
+            FloorLight.intensity = Mathf.Lerp(FloorLight.intensity, newIntensity, 0.05f);
+        }
+
+        if(moveTimer > 18.0f)
+        {
+            SceneManager.LoadScene("MissionControlScene");
+        }
     }
 }
