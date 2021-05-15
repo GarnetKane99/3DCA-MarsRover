@@ -17,6 +17,11 @@ public class Scene4Script : MonoBehaviour
 
     public Canvas OppyHUD;
 
+    public AudioSource PowerDown;
+    public AudioSource CuriousSound;
+
+    public GameObject Battery;
+
     //audio of oppy looking down
 
     // Start is called before the first frame update
@@ -24,6 +29,8 @@ public class Scene4Script : MonoBehaviour
     {
         mainCam = GetComponent<Camera>();
     }
+
+    bool hasSpawned = false;
 
     // Update is called once per frame
     void Update()
@@ -88,7 +95,22 @@ public class Scene4Script : MonoBehaviour
             FloorLight.intensity = Mathf.Lerp(FloorLight.intensity, newIntensity, 0.05f);
         }
 
-        if(moveTimer > 18.0f)
+        if(moveTimer > 18.0f && !hasSpawned)
+        {
+            hasSpawned = true;
+            Battery.SetActive(true);
+            //SceneManager.LoadScene("MissionControlScene");
+        }
+
+        if(moveTimer > 20.5f && moveTimer <= 25.0f)
+        {
+            var NewTarget = Quaternion.Euler(45, 21.85f, -0.2f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, NewTarget, 0.0085f);
+            var shadowTarget = Quaternion.Euler(-74.5f, 0, 15);
+            ShadowForRotate.transform.rotation = Quaternion.Slerp(ShadowForRotate.transform.rotation, shadowTarget, 0.0085f);
+        }
+
+        if(moveTimer > 25.0f)
         {
             SceneManager.LoadScene("MissionControlScene");
         }
