@@ -3704,7 +3704,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 91599cebb3d5c3a4792674b72cf88722, type: 3}
+    m_Font: {fileID: 12800000, guid: 0c8946678a7b54e43bfa84ca74ad19b8, type: 3}
     m_FontSize: 72
     m_FontStyle: 0
     m_BestFit: 0
@@ -3736,6 +3736,7 @@ GameObject:
   - component: {fileID: 935030247909605339}
   - component: {fileID: 935030247909605333}
   - component: {fileID: 935030247909605332}
+  - component: {fileID: 935030247909605340}
   m_Layer: 5
   m_Name: SpeedometerTxt
   m_TagString: Untagged
@@ -3762,6 +3763,18 @@ RectTransform:
   m_AnchoredPosition: {x: 200, y: 200}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &935030247909605340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935030247909605338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64d69b00c9b0ef47998fb984f81535e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &935030247927469944
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4099,6 +4112,7 @@ GameObject:
   - component: {fileID: 1111257602481260293}
   - component: {fileID: 1325862923865735569}
   - component: {fileID: 4529567358159149984}
+  - component: {fileID: 8352289510748890667}
   m_Layer: 5
   m_Name: SpeedometerImage
   m_TagString: Untagged
@@ -4106,3 +4120,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8352289510748890667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8352289510748890666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a52e06273db824f8cd240869c113b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minAmount: 0
+  maxAmount: 0
+  fillDelay: 0
