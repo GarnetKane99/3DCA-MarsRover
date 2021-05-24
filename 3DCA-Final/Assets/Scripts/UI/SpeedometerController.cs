@@ -13,11 +13,15 @@ public class SpeedometerController : MonoBehaviour
     bool isCurrentlyGaining = false;
 
     int speed;
+    float speedFillAmount;
+    public float lerpSpeed;
+    int speedModifier;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        speedFillAmount = 0;
+        speedModifier = 1;
     }
 
     // Update is called once per frame
@@ -31,8 +35,16 @@ public class SpeedometerController : MonoBehaviour
         {
             isGainingSpeed = false;
         }
+        if (Input.GetKeyDown("s"))
+        {
+            speedModifier = 2;
+        }
+        if (Input.GetKeyUp("s"))
+        {
+            speedModifier = 1;
+        }
 
-        if(isGainingSpeed && !isCurrentlyGaining)
+        if (isGainingSpeed && !isCurrentlyGaining)
         {
             StartCoroutine(GainSpeed());
         }
@@ -44,14 +56,14 @@ public class SpeedometerController : MonoBehaviour
 
         speed = Mathf.Clamp(speed, 0, 20);
         spdTxt.text = speed.ToString();
-        //spdImg.fillAmount = (speed * 5) / 100;
-        spdImg.fillAmount = 1;
+        speedFillAmount = ((speed * 5f)/100f);
+        spdImg.fillAmount = Mathf.Lerp(spdImg.fillAmount, speedFillAmount, lerpSpeed * Time.deltaTime);
     }
 
     IEnumerator DropSpeed()
     {
         isDroppingSpeed = true;
-        speed -= 1;
+        speed -= 1 * speedModifier;
         yield return new WaitForSeconds(1f);
         isDroppingSpeed = false;
     }
